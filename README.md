@@ -5,4 +5,4 @@ As my first examination project may not be accepted by the university, this repo
 
 ## Previous work
 
-Io see my previos work, visit my repositorys by clicking [this link](https://github.com/kev9euf3rois?tab=repositories)
+To see my previous work, visit my repositorys by clicking [this link](https://github.com/kev9euf3rois?tab=repositories)
