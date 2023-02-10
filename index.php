@@ -1,6 +1,10 @@
-<?php 
+<?php
+
+session_start();
 
 include('./includes/connect.php');
+include('./includes/functions.php');
+
 
 ?>
 <!DOCTYPE html>
