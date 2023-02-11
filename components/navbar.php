@@ -5,10 +5,10 @@
       </a>
 
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="index.php" class="nav-link active" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Tab 2</a></li>
+        <li class="nav-item"><a href="index.php" class="nav-link <?php if ($pageName == "Home") { ?>active <?php } else {}?>" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="about.php" class="nav-link <?php if ($pageName == "About") { ?>active <?php } else {}?>">About</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Tab 3</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Tab 4</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Tab 5</a></li>
+        <li class="nav-item"><a href="access.php" class="nav-link <?php if ($pageName == "Access") { ?>active <?php } else {}?>">Access</a></li>
       </ul>
     </header>
