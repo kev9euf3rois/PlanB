@@ -7,6 +7,33 @@ include('./includes/functions.php');
 
 $pageName = "Access";
 
+checkLogin();
+
+if(isset($_POST['login'])) {
+  $email = htmlspecialchars($_POST['emailLogin']);
+  $password = htmlspecialchars($_POST['passwordLogin']);
+
+  if(login($email, $password)) {
+    header('Location: index.php');
+  }
+}
+
+if (isset($_POST['register'])) {
+
+  $email = htmlspecialchars($_POST['emailRegister']);
+  $username = htmlspecialchars($_POST['usernameRegister']);
+  $password = htmlspecialchars($_POST['passwordRegister']);
+  $password_repeat = htmlspecialchars($_POST['passwordRepeatRegister']);
+
+  if (register($email, $username, $password, $password_repeat)) {
+    $_SESSION['user'] = $username;
+    header('Location: index.php');
+    exit;
+  } else {
+    $error = 'Registrierung fehlgeschlagen';
+  }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,14 +63,14 @@ $pageName = "Access";
       <div class="col-md-10 mx-auto col-lg-5">
         <form class="p-4 p-md-5 border rounded-3 bg-light" method="post">
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="emailLogin" placeholder="name@example.com" control-id="ControlID-1">
+            <input type="email" class="form-control" id="emailLogin" name="emailLogin" placeholder="name@example.com" control-id="ControlID-1">
             <label for="emailLogin">Email address</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="passwordLogin" placeholder="Password" control-id="ControlID-2">
+            <input type="password" class="form-control" id="passwordLogin" name="passwordLogin" placeholder="Password" control-id="ControlID-2">
             <label for="passwordLogin">Password</label>
           </div>
-          <button class="w-100 btn btn-lg btn-primary" type="post" control-id="ControlID-4">Sign in</button>
+          <button class="w-100 btn btn-lg btn-primary" type="post" name="login" control-id="ControlID-4">Sign in</button>
         </form>
       </div>
     </div>
@@ -52,18 +79,22 @@ $pageName = "Access";
       <div class="col-md-10 mx-auto col-lg-5">
         <form class="p-4 p-md-5 border rounded-3 bg-light" method="post">
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="emailRegister" name="email_register" placeholder="name@example.com" control-id="ControlID-1">
+            <input type="text" class="form-control" id="usernameRegister" name="usernameRegister" placeholder="Username" control-id="ControlID-1">
+            <label for="usernameRegister">Username</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="emailRegister" name="emailRegister" placeholder="name@example.com" control-id="ControlID-1">
             <label for="emailRegister">Email address</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="passwordRegister" placeholder="Password" control-id="ControlID-2">
+            <input type="password" class="form-control" id="passwordRegister" name="passwordRegister" placeholder="Password" control-id="ControlID-2">
             <label for="passwordRegister">Enter password</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="passwordRepeatRegister" placeholder="Password" control-id="ControlID-2">
+            <input type="password" class="form-control" id="passwordRepeatRegister" name="passwordRepeatRegister" placeholder="Password" control-id="ControlID-2">
             <label for="passwordRepeatRegister">Repeat password</label>
           </div>
-          <button class="w-100 btn btn-lg btn-primary" type="post" control-id="ControlID-4">Sign in</button>
+          <button class="w-100 btn btn-lg btn-primary" type="post" name="register" control-id="ControlID-4">Sign in</button>
           <hr class="my-4">
           <small class="text-muted">By clicking Sign in, you agree to the <a href="terms_of_use.php" style="text-decoration: none;">terms of use</a>.</small>
         </form>

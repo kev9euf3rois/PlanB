@@ -9,6 +9,10 @@
         <li class="nav-item"><a href="about.php" class="nav-link <?php if ($pageName == "About") { ?>active <?php } else {}?>">About</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Tab 3</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Tab 4</a></li>
+        <?php if(!isset($_SESSION['user'])) { ?>
         <li class="nav-item"><a href="access.php" class="nav-link <?php if ($pageName == "Access") { ?>active <?php } else {}?>">Access</a></li>
+        <?php } else {?>
+          <li class="nav-item"><a href="logout.php" class="nav-link <?php if ($pageName == "Logout") { ?>active <?php } else {}?>">Logout</a></li>
+        <?php } ?>
       </ul>
     </header>
